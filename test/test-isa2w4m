@@ -7,7 +7,7 @@
 PROG_PATH=$(dirname $0)
 RES_PATH=$PROG_PATH/res
 OUTPUT_PATH=$PROG_PATH/outputs
-ISATAB2W4M=$PROG_PATH/../isatab2w4m
+ISATAB2W4M=$PROG_PATH/../isa2w4m.PY
 
 [[ -d $OUTPUT_PATH ]] || mkdir $OUTPUT_PATH
 
@@ -23,15 +23,6 @@ function error {
 	exit 1
 }
 
-# Read args {{{1
-################################################################
-
-function read_args {
-
-	# Read remaining arguments
-	[[ $# -le 1 ]] || error "You cannot specify more than one argument."
-	[[ $# -eq 1 ]] && ISATAB2W4M="$1"
-}
 
 # Run isatab2w4m {{{1
 ################################################################
@@ -132,8 +123,6 @@ function test_na_filtering {
 
 # MAIN {{{1
 ################################################################
-
-read_args "$@"
 
 plain_test
 test_na_filtering
