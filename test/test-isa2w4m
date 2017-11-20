@@ -7,7 +7,7 @@
 PROG_PATH=$(dirname $0)
 RES_PATH=$PROG_PATH/res
 OUTPUT_PATH=$PROG_PATH/outputs
-ISATAB2W4M=$PROG_PATH/../isa2w4m.PY
+ISATAB2W4M=$PROG_PATH/../isa2w4m.py
 
 [[ -d $OUTPUT_PATH ]] || mkdir $OUTPUT_PATH
 
