@@ -1,7 +1,6 @@
 all:
 
-test: 
-	$(MAKE) -C $@
+test:
 
 planemo-venv/bin/planemo: planemo-venv
 	. planemo-venv/bin/activate && pip install --upgrade pip setuptools

@@ -8,12 +8,30 @@
 	<command><![CDATA[
 		## @@@BEGIN_CHEETAH@@@
 
-		$__tool_directory__/isatab2w4m.py
+		$__tool_directory__/isa2w4m.py
 		-q
 		-i "$isa.extra_files_path"
 		-s "$w4m_sample_metadata"
 		-v "$w4m_variable_metadata"
 		-m "$w4m_data_matrix"
+
+		## Choose study to output
+		#if $study:
+			-n "$study"
+		#end if
+
+		## Choose assay to output
+		#if $assay:
+			-f "$assay"
+		#end if
+
+		## Filtering
+		#if $sample_na_filtering:
+			-S "$sample_na_filtering"
+		#end if
+		#if $variable_na_filtering:
+			-V "$variable_na_filtering"
+		#end if
 
 		## @@@END_CHEETAH@@@
 	]]></command>
@@ -22,6 +40,10 @@
 
 	<inputs>
 		<param name="isa" label="ISA" type="data" format="isa"/>
+		<param name="study" type="text" size="256" value="" help="Type here the name of the assay file you want to extract from the ISA archive. If unset, the first listed study will be used."/>
+		<param name="assay" type="text" size="256" value="" help="Type here the name of the study file you want to extract from the ISA archive. If unset, the first listed assay in the study will be used"/>
+		<param name="sample_na_filtering" type="text" label="Sample metadata columns NA filtering" help="The rows that contain NA value in the specified columns will be filtered out. Column names must be separated by commas."/>
+		<param name="variable_na_filtering" type="text" label="Variable metadata columns NA filtering" help="The rows that contain NA value in the specified columns will be filtered out. Column names must be separated by commas."/>
 	</inputs>
 
 	<!-- Outputs {{{1 -->
