@@ -9,7 +9,6 @@
 		## @@@BEGIN_CHEETAH@@@
 
 		$__tool_directory__/isa2w4m.py
-		-q
 		-i "$isa.extra_files_path"
 		-s "$w4m_sample_metadata"
 		-v "$w4m_variable_metadata"
@@ -57,10 +56,10 @@
 	<!-- Tests {{{1 -->
 	<tests>
 		<test>
-			<param name="isa" value="mtbls30.html"/>
-			<output name="w4m_variable_metadata" file="mtbls30-gcms-w4m-variable-metadata.tsv"/>
-			<output name="w4m_sample_metadata" file="mtbls30-gcms-w4m-sample-metadata.tsv"/>
-			<output name="w4m_data_matrix" file="mtbls30-gcms-w4m-sample-variable-matrix.tsv"/>
+			<param name="isa" value="MTBLS30.zip" ftype="isa"/>
+			<output name="w4m_variable_metadata" file="MTBLS30-w4m-variable-metadata.tsv"/>
+			<output name="w4m_sample_metadata" file="MTBLS30-w4m-sample-metadata.tsv"/>
+			<output name="w4m_data_matrix" file="MTBLS30-w4m-sample-variable-matrix.tsv"/>
 		</test>
 	</tests>
 
