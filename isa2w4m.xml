@@ -1,7 +1,7 @@
 <!-- vi: se fdm=marker : -->
-<tool id="isatab2w4m" name="ISA-Tab to W4M" version="0.1">
+<tool id="isa2w4m" name="ISA to W4M" version="0.1">
 
-	<description>Convert ISA TAB data type into W4M format</description>
+	<description>Convert ISA data type into W4M format</description>
 
 	<!-- Command {{{1 -->
 
@@ -53,5 +53,75 @@
         <data name="w4m_sample_metadata" label="W4M sample metadata.tsv" format="tabular"/>
         <data name="w4m_data_matrix" label="W4M data matrix.tsv" format="tabular"/>
 	</outputs>
+
+	<!-- Tests {{{1 -->
+	<tests>
+		<test>
+			<param name="isa" value="mtbls30.html"/>
+			<output name="w4m_variable_metadata" file="mtbls30-gcms-w4m-variable-metadata.tsv"/>
+			<output name="w4m_sample_metadata" file="mtbls30-gcms-w4m-sample-metadata.tsv"/>
+			<output name="w4m_data_matrix" file="mtbls30-gcms-w4m-sample-variable-matrix.tsv"/>
+		</test>
+	</tests>
+
+	<!-- Help {{{1 -->
+    <help>
+<!-- @@@BEGIN_RST@@@ -->
+
+====================
+ISA to W4M converter
+====================
+
+Converts an ISA dataset into W4M 3 files format.
+
+------
+Inputs
+------
+
+ISA dataset
+===========
+
+The ISA dataset to convert to W4M format.
+
+Study to extract
+================
+
+The file name of the study to extract from the ISA dataset.
+
+Assay to extract
+================
+
+The file name of the assay to extract from the ISA dataset chosen study.
+
+Sample NA filtering
+===================
+
+This is a comma separated list of column names from the sample metadata dataset.
+Rows containg NA values in one or more of the listed columns will be removed from the dataset.
+
+Variable NA filtering
+=====================
+
+This is a comma separated list of column names from the variable metadata dataset.
+Rows containg NA values in one or more of the listed columns will be removed from the dataset.
+
+-------
+Outputs
+-------
+
+The output is a set of 3 datasets:
+
+ - Samples metadata.
+ - Variables metadata.
+ - Samples x variables matrix. 
+
+<!-- @@@END_RST@@@ -->
+    </help>
+
+	<!-- Citations {{{1 -->
+    <citations>
+        <citation type="doi">10.1038/ng.1054</citation> <!-- ISA -->
+        <citation type="doi">10.1093/bioinformatics/btu813</citation> <!-- W4M -->
+    </citations>
 
 </tool>
