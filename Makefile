@@ -20,4 +20,4 @@ clean:
 	$(RM) -r planemo-venv
 	$(RM) tool_test_output.*
 
-.PHONY:	all clean test planemolint planemotest
+.PHONY:	all clean planemolint planemotest
