@@ -1,0 +1,21 @@
+notifications:
+ email:
+  recipients:
+   - pk.roger@icloud.com
+
+install:
+    - sudo apt-get install -y python-virtualenv
+    - git clone https://github.com/ISA-tools/isa-api.git
+    - echo $PWD
+    - sudo pip3 install -e $PWD/isa-api
+
+branches:
+  only:
+    - master
+    - develop
+
+script:
+    - make test
+    - make planemolint
+# Planemo test works locally, but not on Travis-CI
+#    - make planemotest
