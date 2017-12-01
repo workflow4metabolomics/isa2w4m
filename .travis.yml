@@ -9,11 +9,7 @@ python:
     - "3.6"
 
 install:
-    #    - sudo apt-get install -y python-virtualenv
-      #    - sudo apt-get install -y python3-pip
     - git clone https://github.com/ISA-tools/isa-api.git
-      #    - echo $PWD
-      #    - sudo pip3 install -e $PWD/isa-api
 
 branches:
   only:
@@ -22,5 +18,4 @@ branches:
 
 script:
     - make planemolint
-# Planemo test works locally, but not on Travis-CI
-#    - make planemotest
+    - make planemotest
