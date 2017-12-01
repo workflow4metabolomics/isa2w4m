@@ -5,6 +5,7 @@ notifications:
 
 install:
     - sudo apt-get install -y python-virtualenv
+    - sudo apt-get install -y pip3
     - git clone https://github.com/ISA-tools/isa-api.git
     - echo $PWD
     - sudo pip3 install -e $PWD/isa-api
