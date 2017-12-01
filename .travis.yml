@@ -12,7 +12,6 @@ install:
     - sudo apt-get update
     - sudo apt-get install -y python3-pip
     - git clone -b feat/w4m-tests https://github.com/pkrog/isa-api.git
-    - sudo pip3 install -e $PWD/isa-api
 
 branches:
   only:
