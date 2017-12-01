@@ -20,4 +20,3 @@ branches:
 
 script:
     - make planemolint
-    - make planemotest
