@@ -10,7 +10,7 @@ python:
 
 install:
     - git clone https://github.com/ISA-tools/isa-api.git
-    - sudo pip3 install -e $PWD/isa-api
+    - sudo pip install -e $PWD/isa-api
 
 branches:
   only:
