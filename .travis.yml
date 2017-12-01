@@ -15,7 +15,6 @@ branches:
     - develop
 
 script:
-    - make test
     - make planemolint
 # Planemo test works locally, but not on Travis-CI
 #    - make planemotest
