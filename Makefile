@@ -1,6 +1,7 @@
 all:
 
 test:
+	./test-isa2w4m
 
 planemo-venv/bin/planemo: planemo-venv
 	. planemo-venv/bin/activate && pip install --upgrade pip setuptools
@@ -19,5 +20,6 @@ clean:
 	$(RM) -r $(HOME)/.planemo
 	$(RM) -r planemo-venv
 	$(RM) tool_test_output.*
+	$(RM) -r MTBLS30
 
 .PHONY:	all clean planemolint planemotest
