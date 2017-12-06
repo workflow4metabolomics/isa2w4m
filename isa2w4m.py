@@ -1,6 +1,9 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3
 # vi: fdm=marker
 
 from isatools.convert import isatab2w4m
+import warnings
 
-isatab2w4m.main()
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    isatab2w4m.main()
