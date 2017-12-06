@@ -19,4 +19,5 @@ branches:
     - develop
 
 script:
+    - make test
     - make planemolint
