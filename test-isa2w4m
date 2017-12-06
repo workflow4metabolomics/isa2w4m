@@ -7,7 +7,7 @@ extract_dir=$scriptdir/MTBLS30
 
 rm -rf $extract_dir
 unzip -d $extract_dir $zip_file
-./isa2w4m.py -i $extract_dir -d $scriptdir || exit 1
+$scriptdir/isa2w4m.py -i $extract_dir -d $scriptdir || exit 1
 diff $scriptdir/MTBLS30-a_york_src_GC_mass_spectrometry.txt-sample-metadata.tsv $scriptdir/test-data/MTBLS30-w4m-sample-metadata.tsv || exit 2
 diff $scriptdir/MTBLS30-a_york_src_GC_mass_spectrometry.txt-sample-variable-matrix.tsv $scriptdir/test-data/MTBLS30-w4m-sample-variable-matrix.tsv || exit 3
 diff $scriptdir/MTBLS30-a_york_src_GC_mass_spectrometry.txt-variable-metadata.tsv $scriptdir/test-data/MTBLS30-w4m-variable-metadata.tsv || exit 4
