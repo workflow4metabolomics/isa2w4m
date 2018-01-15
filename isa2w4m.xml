@@ -38,7 +38,7 @@
 	<!-- Inputs {{{1 -->
 
 	<inputs>
-		<param name="isa" label="ISA" type="data" format="isa"/>
+		<param name="isa" label="ISA" type="data" format="isa-tab"/>
 		<param name="study" type="text" size="256" value="" help="Type here the name of the assay file you want to extract from the ISA archive. If unset, the first listed study will be used."/>
 		<param name="assay" type="text" size="256" value="" help="Type here the name of the study file you want to extract from the ISA archive. If unset, the first listed assay in the study will be used"/>
 		<param name="sample_na_filtering" type="text" label="Sample metadata columns NA filtering" help="The rows that contain NA value in the specified columns will be filtered out. Column names must be separated by commas."/>
@@ -71,7 +71,7 @@
 ISA to W4M converter
 ====================
 
-Converts an ISA dataset into W4M 3 files format.
+Converts an ISA-Tab dataset into W4M 3 files format.
 
 ------
 Inputs
@@ -80,7 +80,7 @@ Inputs
 ISA dataset
 ===========
 
-The ISA dataset to convert to W4M format.
+The ISA-Tab dataset to convert to W4M format.
 
 Study to extract
 ================
