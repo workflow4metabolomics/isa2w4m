@@ -48,9 +48,9 @@
 	<!-- Outputs {{{1 -->
 
     <outputs>
-		<data name="w4m_variable_metadata" label="W4M variable metadata.tsv" format="tabular"/>
-        <data name="w4m_sample_metadata" label="W4M sample metadata.tsv" format="tabular"/>
-        <data name="w4m_data_matrix" label="W4M data matrix.tsv" format="tabular"/>
+		<data name="w4m_variable_metadata" label="${isa.name} W4M var" format="tabular"/>
+        <data name="w4m_sample_metadata" label="${isa.name} W4M samp" format="tabular"/>
+        <data name="w4m_data_matrix" label="${isa.name} W4M data" format="tabular"/>
 	</outputs>
 
 	<!-- Tests {{{1 -->
