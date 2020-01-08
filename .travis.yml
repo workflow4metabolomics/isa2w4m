@@ -1,24 +1,21 @@
+dist: bionic
+
 notifications:
  email:
   recipients:
-   - pk.roger@icloud.com
+   - pierrick.roger@cea.fr
 
 language: python
 
 python:
-    - "3.6"
+    - "3.8"
 
 install:
     - sudo apt-get update
-    - sudo apt-get install -y python3-pip
-    - git clone -b feat/w4m-tests https://github.com/pkrog/isa-api.git
-    - pip3 install -e isa-api
-
-branches:
-  only:
-    - master
-    - develop
+    - sudo apt-get install -y python3-pip python3-setuptools
+    - pip3 install isatools
 
 script:
     - make test
-    - make planemolint
+    - make plint
+    - make ptest

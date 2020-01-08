@@ -1,7 +1,11 @@
 <!-- vi: se fdm=marker : -->
-<tool id="isa2w4m" name="ISA to W4M" version="1.1.0">
+<tool id="isa2w4m" name="ISA to W4M" version="1.1.1">
 
 	<description>Convert ISA data type into W4M format</description>
+
+	<requirements>
+		<requirement type="package" version="0.10.3">isatools</requirement>
+	</requirements>
 
 	<!-- Command {{{1 -->
 
@@ -56,7 +60,7 @@
 	<!-- Tests {{{1 -->
 	<tests>
 		<test>
-			<param name="isa" value="MTBLS30.zip" ftype="isa"/>
+			<param name="isa" value="MTBLS30.zip" ftype="isa-tab"/>
 			<output name="w4m_variable_metadata" file="MTBLS30-w4m-variable-metadata.tsv"/>
 			<output name="w4m_sample_metadata" file="MTBLS30-w4m-sample-metadata.tsv"/>
 			<output name="w4m_data_matrix" file="MTBLS30-w4m-sample-variable-matrix.tsv"/>
