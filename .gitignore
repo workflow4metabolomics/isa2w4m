@@ -3,3 +3,4 @@ planemo-venv
 tool_test_output.*
 MTBLS30
 MTBLS30*.tsv
+dist

@@ -6,6 +6,10 @@ Convert an ISA study into the 3 TSV files format of W4M.
 
 ## Updates
 
+### 1.1.2
+
+ * Changed double quotes in single quotes inside XML Command tag.
+
 ### 1.1.1
 
  * Correct planemo test.
