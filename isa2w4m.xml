@@ -4,7 +4,7 @@
 	<description>Convert ISA data type into W4M format</description>
 
 	<requirements>
-		<requirement type="package" version="0.12.0">isatools</requirement>
+		<requirement type="package" version="0.12.2">isatools</requirement>
 	</requirements>
 
 	<!-- Command {{{1 -->
