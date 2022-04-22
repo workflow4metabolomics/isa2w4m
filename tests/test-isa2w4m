@@ -2,7 +2,7 @@
 
 # Global variables & constants
 SCRIPT_DIR=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
-REF_DIR="$SCRIPT_DIR/res"
+REF_DIR="$SCRIPT_DIR/../test-data"
 OUT_DIR="$SCRIPT_DIR/output"
 [[ -d $OUT_DIR ]] || mkdir -p "$OUT_DIR"
 

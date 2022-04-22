@@ -2,6 +2,6 @@
 planemo-venv
 tool_test_output.*
 dist
-test-venv
+*-venv
 tests/output
 .python-version

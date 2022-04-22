@@ -65,6 +65,12 @@
 			<output name="w4m_sample_metadata" file="MTBLS30-w4m-sample-metadata.tsv"/>
 			<output name="w4m_data_matrix" file="MTBLS30-w4m-sample-variable-matrix.tsv"/>
 		</test>
+		<test>
+			<param name="isa" value="MTBLS174.zip" ftype="isa-tab"/>
+			<output name="w4m_variable_metadata" file="MTBLS174-w4m-variable-metadata.tsv"/>
+			<output name="w4m_sample_metadata" file="MTBLS174-w4m-sample-metadata.tsv"/>
+			<output name="w4m_data_matrix" file="MTBLS174-w4m-sample-variable-matrix.tsv"/>
+		</test>
 	</tests>
 
 	<!-- Help {{{1 -->
