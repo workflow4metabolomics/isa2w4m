@@ -13,9 +13,9 @@ PYTHON=$(PYENV) exec python3 -s
 endif
 export PYTHONNOUSERSITE=1 # Forbid use of user libraries folder (~/.local)
 VM = isa2w4m-archlinux
-CONDA_DIR=$(HOME)/plnmconda # Planemo conda (prefix)
+CONDA_DIR=$(HOME)/plnmconda
 export TMPDIR=$(HOME)/plnmtmp
-PLANEMO_DIR=$(HOME)/plnmws # Planemo workspace dir (prefix)
+PLANEMO_DIR=$(HOME)/plnmws
 
 all:
 
@@ -91,7 +91,7 @@ ptoolshed_update: dist/$(REPOS_NAME)/ test-venv/bin/planemo
 	. planemo-venv/bin/activate && cd $< && planemo shed_update --check_diff --skip_metadata --shed_target toolshed
 
 clean:
-	$(RM) -r *-venv $(CONDA_DIR)* $(PLANEMO_DIR)*
+	$(RM) -r *-venv $(HOME)/plnm*
 	$(RM) tool_test_output.*
 	$(RM) -r dist
 	$(RM) -r tests/output
