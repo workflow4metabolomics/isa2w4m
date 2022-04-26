@@ -11,7 +11,10 @@ PYTHON=python3 -s
 else
 PYTHON=$(PYENV) exec python3 -s
 endif
-export PYTHONNOUSERSITE=1 # Forbid use of user libraries folder (~/.local)
+
+# Forbid use of user libraries folder (~/.local)
+export PYTHONNOUSERSITE=1
+
 VM = isa2w4m-archlinux
 CONDA_DIR=$(HOME)/plnmconda
 export TMPDIR=$(HOME)/plnmtmp
