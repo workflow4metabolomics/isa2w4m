@@ -1,10 +1,11 @@
 <!-- vi: se fdm=marker : -->
-<tool id="isa2w4m" name="ISA to W4M" version="1.1.2">
+<tool id="isa2w4m" name="ISA to W4M" version="1.1.3">
 
 	<description>Convert ISA data type into W4M format</description>
 
 	<requirements>
-		<requirement type="package" version="0.10.3">isatools</requirement>
+		<requirement type="package" version="1.2.5">pandas</requirement>
+		<requirement type="package" version="0.12.2">isatools</requirement>
 	</requirements>
 
 	<!-- Command {{{1 -->
@@ -36,6 +37,10 @@
 			-V '$variable_na_filtering'
 		#end if
 
+		## Redirect stderr to stdout otherwise Galaxy thinks the tool fails if
+		## it sees just one character on stderr.
+		2>&1
+
 		## @@@END_CHEETAH@@@
 	]]></command>
 
@@ -64,6 +69,12 @@
 			<output name="w4m_variable_metadata" file="MTBLS30-w4m-variable-metadata.tsv"/>
 			<output name="w4m_sample_metadata" file="MTBLS30-w4m-sample-metadata.tsv"/>
 			<output name="w4m_data_matrix" file="MTBLS30-w4m-sample-variable-matrix.tsv"/>
+		</test>
+		<test>
+			<param name="isa" value="MTBLS174.zip" ftype="isa-tab"/>
+			<output name="w4m_variable_metadata" file="MTBLS174-w4m-variable-metadata.tsv"/>
+			<output name="w4m_sample_metadata" file="MTBLS174-w4m-sample-metadata.tsv"/>
+			<output name="w4m_data_matrix" file="MTBLS174-w4m-sample-variable-matrix.tsv"/>
 		</test>
 	</tests>
 
