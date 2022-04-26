@@ -4,6 +4,7 @@
 	<description>Convert ISA data type into W4M format</description>
 
 	<requirements>
+		<requirement type="package" version="1.2.5">pandas</requirement>
 		<requirement type="package" version="0.12.2">isatools</requirement>
 	</requirements>
 
@@ -35,6 +36,10 @@
 		#if $variable_na_filtering:
 			-V '$variable_na_filtering'
 		#end if
+
+		## Redirect stderr to stdout otherwise Galaxy thinks the tool fails if
+		## it sees just one character on stderr.
+		2>&1
 
 		## @@@END_CHEETAH@@@
 	]]></command>

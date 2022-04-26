@@ -60,15 +60,26 @@ plint$(1): planemo-venv/bin/planemo
 	. planemo$(1)-venv/bin/activate && planemo --directory $(PLANEMO_DIR)$(1) lint $(TOOL_XML)
 
 ptest$(1): planemo$(1)-venv/bin/planemo $(TMPDIR)
-#	. planemo$(1)-venv/bin/activate && planemo conda_install --conda_prefix "$(CONDA_DIR)$(1)" $(TOOL_XML)
-#	. planemo$(1)-venv/bin/activate && planemo --directory $(PLANEMO_DIR)$(1) test --conda_prefix "$(CONDA_DIR)$(1)" --conda_dependency_resolution --galaxy_branch release_21.09 $(TOOL_XML)
 	. planemo$(1)-venv/bin/activate && PYTHONNOUSERSITE=1 planemo --directory $(PLANEMO_DIR)$(1) test --conda_prefix "$(CONDA_DIR)$(1)" --conda_dependency_resolution $(TOOL_XML)
+
+pttsdiff$(1): dist/$(REPOS_NAME)/ planemo$(1)-venv/bin/planemo $(HOME)/.planemo.yml
+	@echo "Check difference with testtoolshed version."
+	. planemo$(1)-venv/bin/activate && cd $$< && planemo shed_diff --shed_target testtoolshed
+
+pttsupdate$(1): dist/$(REPOS_NAME)/ planemo$(1)-venv/bin/planemo $(HOME)/.planemo.yml
+	@echo "Push new version to testtoolshed."
+	. planemo$(1)-venv/bin/activate && cd $$< && planemo shed_update --check_diff --skip_metadata --shed_target testtoolshed
+
+ptsdiff$(1): dist/$(REPOS_NAME)/ planemo$(1)-venv/bin/planemo $(HOME)/.planemo.yml
+	@echo "Check difference with toolshed version."
+	. planemo$(1)-venv/bin/activate && cd $$< && planemo shed_diff --shed_target toolshed
+
+ptsupdate$(1): dist/$(REPOS_NAME)/ planemo$(1)-venv/bin/planemo $(HOME)/.planemo.yml
+	@echo "Push new version to toolshed."
+	. planemo$(1)-venv/bin/activate && cd $$< && planemo shed_update --check_diff --skip_metadata --shed_target toolshed
 endef
 
 $(foreach ver,37 38 39,$(eval $(call ptest_on_pyver,$(ver))))
-
-#$(CONDA_DIR): planemo-venv/bin/planemo 
-#	. planemo-venv/bin/activate && planemo conda_init --conda_prefix "$(CONDA_DIR)"
 
 plint: plint39
 
@@ -78,17 +89,13 @@ dist/$(REPOS_NAME)/:
 	mkdir -p $@
 	cp -Lr README.md $(SCRIPT_NAME) $(TOOL_XML) test-data $@
 
-ptesttoolshed_diff: dist/$(REPOS_NAME)/ test-venv/bin/planemo
-	. planemo-venv/bin/activate && cd $< && planemo shed_diff --shed_target testtoolshed
+pttsdiff: pttsdiff39
 
-ptesttoolshed_update: dist/$(REPOS_NAME)/ test-venv/bin/planemo
-	. planemo-venv/bin/activate && cd $< && planemo shed_update --check_diff --skip_metadata --shed_target testtoolshed
+ptsdiff: ptsdiff39
 
-ptoolshed_diff: dist/$(REPOS_NAME)/ test-venv/bin/planemo
-	. planemo-venv/bin/activate && cd $< && planemo shed_diff --shed_target toolshed
+pttsupdate: pttsupdate39
 
-ptoolshed_update: dist/$(REPOS_NAME)/ test-venv/bin/planemo
-	. planemo-venv/bin/activate && cd $< && planemo shed_update --check_diff --skip_metadata --shed_target toolshed
+ptsupdate: ptsupdate39
 
 clean:
 	$(RM) -r *-venv $(HOME)/plnm*
