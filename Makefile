@@ -50,6 +50,7 @@ $(foreach ver,37 38 39,$(eval $(call test_on_pyver,$(ver))))
 $(TMPDIR):
 	mkdir -p "$@"
 
+# TODO Check for presence of ~/.local/lib/python* folders before running planemo.
 define ptest_on_pyver
 planemo$(1)-venv: export PYENV_VERSION=$$(PYVER$(1))
 planemo$(1)-venv: pyver
@@ -63,7 +64,7 @@ plint$(1): planemo-venv/bin/planemo
 	. planemo$(1)-venv/bin/activate && planemo --directory $(PLANEMO_DIR)$(1) lint $(TOOL_XML)
 
 ptest$(1): planemo$(1)-venv/bin/planemo $(TMPDIR)
-	. planemo$(1)-venv/bin/activate && PYTHONNOUSERSITE=1 planemo --directory $(PLANEMO_DIR)$(1) test --conda_prefix "$(CONDA_DIR)$(1)" --conda_dependency_resolution $(TOOL_XML)
+	. planemo$(1)-venv/bin/activate && PYTHONNOUSERSITE=1 planemo --directory $(PLANEMO_DIR)$(1) test --conda_prefix "$(CONDA_DIR)$(1)" --conda_dependency_resolution --galaxy_python_version $(subst 3,3.,$(1)) $(TOOL_XML)
 
 pttsdiff$(1): dist/$(REPOS_NAME)/ planemo$(1)-venv/bin/planemo $(HOME)/.planemo.yml
 	@echo "Check difference with testtoolshed version."
