@@ -11,10 +11,6 @@ PYTHON=python3 -s
 else
 PYTHON=$(PYENV) exec python3 -s
 endif
-
-# Forbid use of user libraries folder (~/.local)
-export PYTHONNOUSERSITE=1
-
 VM = isa2w4m-archlinux
 CONDA_DIR=$(HOME)/plnmconda
 export TMPDIR=$(HOME)/plnmtmp
@@ -39,9 +35,9 @@ test$(1): export PYENV_VERSION=$$(PYVER$(1))
 test$(1): pyver requirements.txt
 	$(PYTHON) -m venv test$(1)-venv
 	. test$(1)-venv/bin/activate && test "Python $$(PYENV_VERSION)" = "$$$$(python3 --version)"
-	. test$(1)-venv/bin/activate && python3 -m pip install --no-cache-dir --upgrade pip
-	. test$(1)-venv/bin/activate && python3 -m pip install --no-cache-dir -r requirements.txt
-	. test$(1)-venv/bin/activate && python3 -c 'import isatools'
+	. test$(1)-venv/bin/activate && python3 -s -m pip install --no-cache-dir --upgrade pip
+	. test$(1)-venv/bin/activate && python3 -s -m pip install --no-cache-dir -r requirements.txt
+	. test$(1)-venv/bin/activate && python3 -s -c 'import isatools'
 	. test$(1)-venv/bin/activate && tests/test-isa2w4m
 endef
 
@@ -64,7 +60,7 @@ plint$(1): planemo-venv/bin/planemo
 	. planemo$(1)-venv/bin/activate && planemo --directory $(PLANEMO_DIR)$(1) lint $(TOOL_XML)
 
 ptest$(1): planemo$(1)-venv/bin/planemo $(TMPDIR)
-	. planemo$(1)-venv/bin/activate && PYTHONNOUSERSITE=1 planemo --directory $(PLANEMO_DIR)$(1) test --conda_prefix "$(CONDA_DIR)$(1)" --conda_dependency_resolution --galaxy_python_version $(subst 3,3.,$(1)) $(TOOL_XML)
+	. planemo$(1)-venv/bin/activate && planemo --directory $(PLANEMO_DIR)$(1) test --conda_prefix "$(CONDA_DIR)$(1)" --conda_dependency_resolution --galaxy_python_version $(subst 3,3.,$(1)) $(TOOL_XML)
 
 pttsdiff$(1): dist/$(REPOS_NAME)/ planemo$(1)-venv/bin/planemo $(HOME)/.planemo.yml
 	@echo "Check difference with testtoolshed version."
